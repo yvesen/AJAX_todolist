@@ -60,8 +60,25 @@
         }
       },
       success: function(data) {
-
+        var todo = document.createElement("tr");
+        todo.id = data["id"];
+        $(todo).html($("#todo-template").html());
+        $(todo).find(".title.my-font").html(data["title"]);
+        $("#todolist").append(todo);
         }
     });
   });
+</script>
+
+<script type="text/template" id="todo-template">
+  <td class="my-pointer">
+    <span class="my-font glyphicon glyphicon-unchecked"></span>
+  </td>
+  <td>
+    <p class="title my-font"></p>
+  </td>
+  <td class="my-operation">
+    <span class="my-btn my-btn-transparent text-info glyphicon glyphicon-pencil"></span>
+    <span class="delete-todo my-btn my-btn-transparent text-danger glyphicon glyphicon-trash"></span>
+  </td>
 </script>
